@@ -3,16 +3,15 @@ import random
 def jogar():
     
     boas_vindas()
+    palavra = randoniza_palavra()
+    letras_certas = inicia_chute(palavra)
+    print(letras_certas)
 
-    randoniza_palavra()
-    
-    letras_certas = ["_" for letra in palavra]
-    
     enforcou = False
     acertou = False
     erros = 0
     
-    print(letras_certas)
+    
     
     while not enforcou and not acertou:
         
@@ -20,11 +19,7 @@ def jogar():
         chute = chute.strip().upper()
         
         if chute in palavra:
-            index = 0
-            for letra in palavra:
-                if chute == letra:
-                    letras_certas[index] = letra
-                index +=1
+            chute_correto(chute, letras_certas, palavra)
         else:
             erros +=1
             
@@ -35,11 +30,9 @@ def jogar():
     if acertou:
         print("Acertou boy!!")
     else:
-        print("Erro, mato o buneco :(")
-    print("Fim de jogo")    
-if __name__ == "__main__":
-    jogar()
-    
+        print("Erro, mato o buneco :(")   
+
+
 def boas_vindas():
     print("****************************")
     print("********Jogo da Forca*******")
@@ -57,3 +50,18 @@ def randoniza_palavra():
     
     numero = random.randrange(0, len(palavras))
     palavra = palavras[numero].upper()
+    return palavra
+
+def inicia_chute(palavra):
+    return ["_" for letra in palavra]
+
+def chute_correto(chute, letras_certas, palavra):
+    index = 0
+    for letra in palavra:
+        if chute == letra:
+            letras_certas[index] = letra
+        index +=1
+        
+
+if __name__ == "__main__":
+    jogar()
