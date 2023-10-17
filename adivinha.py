@@ -24,7 +24,7 @@ def jogar():
         total_chance = 4
 
     for rodada in range(1, total_chance):
-        print('Tentaitva: {} de {}'.format(rodada, total_chance+1))
+        print('Tentativa: {} de {}'.format(rodada, total_chance+1))
         chute_str = input("Digite um numero entre 1 e 100: ")
         print("Você digitou ", chute_str)
         chute = int(chute_str)
